@@ -1,14 +1,16 @@
 ## Add Variants to FASTA
 
-This directory contains a script that adds variants to a reference sequence in FASTA file format. There are multiple extant programs that can complete this task (e.g., bcftools consensus, GATK FastaAlternateReferenceMaker). However, such programs require software and strict input file formats for variants. This script here requires only Python version 3 and the input variant file is a text file that can be easily edited. As currently written, the script should be run separately per chromosome/contig requiring separate files for the sequence and variants. Sequence files should be uncompressed. I have included bash code below to perform this task across multiple chromosomes.
+This directory contains a script that adds variants to a reference sequence in FASTA file format. There are multiple extant programs that can complete this task (e.g., bcftools consensus, GATK FastaAlternateReferenceMaker). However, such programs require software and strict input file formats for variants. This script here requires only Python version 3 and the input variant file is a text file that can be easily edited. However, the script must be run separately per chromosome/contig; therefore, requiring separate files for the sequence and variants. Sequence files should be uncompressed. I have included bash code below to perform this task across multiple chromosomes.
 
-Also present in this directory are two example files that can be used to see the script in action. 'example_variants.txt' illustrates the variant file format, which includes three tab-delimited fields: chromosome, variant position (1-based), and the variant to be inserted. 'example_FASTA.fa' is an example FASTA. To generate a new FASTA using the example reference and example variants, run the following:
+The script contains three required arguments and an optional fourth argument. --variants indicates the path to the variants file, which is a tab-delimited files containing three fields per variant: 1) the chromosome, 2) the variant position (1-based), and 3) the variant to be inserted (e.g., 'A'). --fasta indicates the path to the FASTA file. --out indicates the path to the new FASTA file. The optional --split field indicates the number of bases to include per line in the new FASTA file. Most FASTAs include 50 per line; however, there may be situations where a single long sequence is desired or any other number of bases per lines. The default value is 50 and this flag can be omitted if the default value is desired. This argument takes an integer so no need to use quotes.
+
+Also present in this directory are two example files that can be used to see the script in action. 'example_variants.txt' is an example variants file, whereas 'example_FASTA.fa' is an example FASTA. To generate a new FASTA using the example reference and example variants, run the following:
 
 ```
 python add_variants_to_FASTA.py --variants example_variants.txt --fasta example_FASTA.fa --out new_FASTA.fa
 ```
 
-The resulting sequence should be: TAACNCTAACCCNAACCCTNACCNA.
+The resulting sequence should be: TAACNCTAACCCNAACCCTNACCNA. The sequence is too short to need the optional fourth argument but a longer sequence is used this argument can be set to whatever desired value that is less than or equal to the total sequence length.
 
 <br/>
 
