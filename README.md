@@ -10,7 +10,7 @@ Also present in this directory are two example files that can be used to see the
 python add_variants_to_FASTA.py --variants example_variants.txt --fasta example_FASTA.fa --out new_FASTA.fa
 ```
 
-The resulting sequence should be: TAACNCTAACCCNAACCCTNACCNA. The sequence is too short to need the optional fourth argument but a longer sequence is used this argument can be set to whatever desired value that is less than or equal to the total sequence length.
+The resulting sequence should be: TAACNCTAACCCNAACCCTNACCNA. The sequence is too short to need the optional fourth argument but if a longer sequence is used, this argument can be set to whatever desired value that is less than or equal to the total sequence length.
 
 <br/>
 
