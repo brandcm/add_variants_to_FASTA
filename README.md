@@ -32,7 +32,7 @@ I also highly recommend indexing your new FASTA file using samtools faidx. If yo
 1) For the variant file, use the command below to split by the first field (chromosome) using awk. This assumes that the chromosome field includes "chr" before the chromosome number.
 
 ```
-awk '{print>$1}' all_variants.txt && for c in chr*; do mv $c $c_variants.txt; done
+awk '{print>$1"_variants.txt"}' all_variants.txt 
 ```
 
 <br/>
